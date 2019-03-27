@@ -15,12 +15,20 @@ app_license = "MIT"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/erpnext_dashboard/css/erpnext_dashboard.css"
-# app_include_js = "/assets/erpnext_dashboard/js/erpnext_dashboard.js"
+app_include_css = [
+	"/assets/css/dashboard-min.css"
+]
+app_include_js = [
+	"/assets/js/dashboard.min.js"
+]
 
-# include js, css files in header of web template
-# web_include_css = "/assets/erpnext_dashboard/css/erpnext_dashboard.css"
-# web_include_js = "/assets/erpnext_dashboard/js/erpnext_dashboard.js"
+web_include_css = [
+	"/assets/css/web-dashboard.min.css"
+]
+
+web_include_js = [
+	"/assets/js/web-dashboard.min.js"
+]
 
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
