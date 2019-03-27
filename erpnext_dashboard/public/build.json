@@ -1,0 +1,14 @@
+{
+	"css/web-dashboard.min.css":[
+		"public/css/dashboard-web.css"
+	],
+	"js/web-dashboard.min.js":[
+		"public/js/dashboard/dashboard-web.js"
+	],
+	"css/dashboard.min.css":[
+		"public/css/dashboard.css"
+	],
+	"js/dashboard.min.js":[
+		"public/js/dashboard/dashboard.js"
+	]
+}
