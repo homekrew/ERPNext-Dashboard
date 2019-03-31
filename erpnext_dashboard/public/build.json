@@ -1,14 +1,8 @@
 {
-	"css/web-dashboard.min.css":[
-		"public/css/dashboard-web.css"
+	"css/dashboard-min.css":[
+		"templates/includes/dashboard/css/dashboard.css"
 	],
-	"js/web-dashboard.min.js":[
-		"public/js/dashboard/dashboard-web.js"
-	],
-	"css/dashboard.min.css":[
-		"public/css/dashboard.css"
-	],
-	"js/dashboard.min.js":[
-		"public/js/dashboard/dashboard.js"
+	"js/dashboard-min.js":[
+		"templates/includes/dashboard/js/dashboard.js"
 	]
 }

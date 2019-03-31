@@ -15,20 +15,20 @@ app_license = "MIT"
 # ------------------
 
 # include js, css files in header of desk.html
-app_include_css = [
-	"/assets/css/dashboard-min.css"
-]
-app_include_js = [
-	"/assets/js/dashboard.min.js"
-]
+#app_include_css = [
+#	"/assets/css/dashboard-min.css"
+#]
+#app_include_js = [
+#	"/assets/js/dashboard.min.js"
+#]
 
-web_include_css = [
-	"/assets/css/web-dashboard.min.css"
-]
+#web_include_css = [
+#	"/assets/css/web-dashboard.min.css"
+#]
 
-web_include_js = [
-	"/assets/js/web-dashboard.min.js"
-]
+#web_include_js = [
+#	"/assets/js/web-dashboard.min.js"
+#]
 
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
@@ -44,7 +44,7 @@ web_include_js = [
 
 # application home page (will override Website Settings)
 # home_page = "login"
-
+update_website_context = "erpnext_dashboard.website.website.update_website_context"
 # website user home page (by Role)
 # role_home_page = {
 #	"Role": "home_page"
