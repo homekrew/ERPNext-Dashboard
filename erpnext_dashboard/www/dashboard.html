@@ -1,19 +1,46 @@
-<style>
-	{% include "templates/includes/dashboard/dashboard.css" %}
-</style>
 {% extends "templates/web.html" %}
+{% block title %}
+	Welcome to Dashboards
+{% endblock %}
+{%- block head -%}
+	{% if meta_block is defined -%}
+		{{ meta_block }}
+	{%- endif %}
+
+	{% if head_html is defined -%}
+		{{ head_html or "" }}
+	{%- endif %}
+
+	{%- block head_include %}{{ head_include or "" }}{% endblock -%}
+
+	{%- block style %}
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+		<link rel="stylesheet" href="/assets/css/dashboard-min.css"/>	
+	{%- endblock -%}
+{%- endblock -%}
+
 {% block content %}
 	{% block sidebard %}{% endblock %}
 	<div class="page_content">
 		<div class="row">
-			<div class="col-md-12 mx-auto">
+			<div class="col s12 m12 l12">
 				{% for module in setting.modules %}
-					<div class="col-md-4" style="height:300px;">
-						<div class="card" style="color:black">
-							<div class="card-header">{{ module.label }}</div>
-							<img src="..." class="card-img-top" alt="...">
+					<a href="{{ module.url}}">
+						<div class="card animate fadeUp col s12 m4 l4" style="height:250px;">
+							<h4 class="header text-center waves-effect waves-light btn gradient-45deg-indigo-purple">
+								{{ module.label }}
+							</h4>
+							<div class="card-image">
+								<img style="width:100px;margin:auto;" src="{{ module.dashboard_image}}" 
+									alt="{{ module.label }}"/>
+							</div>
+							<div class="card-content">
+							</div>
 						</div>
-					</div>
+					</a>
 				{% endfor %}
 			</div>
 		</div>
@@ -25,21 +52,42 @@
 	{% include "templates/includes/dashboard/navbar/navbar.html" %}
 	</header>
 {% endblock %}
-{% block style %}
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-{% endblock %}
 
 {% block base_scripts %}
 	 <!-- js should be loaded in body! -->
 	<script type="text/javascript"
-		src="/assets/frappe/js/lib/jquery/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.slim.js"></script>
+		src="/assets/erpnext_dashboard/js/libs/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" 
+		src="/assets/erpnext_dashboard/js/libs/materialize.min.js"></script>
+	<script type="text/javascript" 
+		src="/assets/erpnext_dashboard/js/libs/perfect-scrollbar.js"></script>
+	<script type="text/javascript" 
+		src="/assets/erpnext_dashboard/js/libs/pixinvent.js"></script>
+	<script type="text/javascript" 
+		src="/assets/erpnext_dashboard/js/libs/popper.js"></script>
+	<script type="text/javascript"
+		src="/assets/erpnext_dashboard/js/libs/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="/assets/erpnext_dashboard/js/libs/Chart.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.slim.js"></script>
 	<script type="text/javascript"
 		src="/assets/js/frappe-web.min.js"></script>
-	<script type="text/javascript"
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-	</script>	
+	<!-- <script type="text/javascript"
+		src="/assets/js/dashboard-min.js"></script>
+	!-->
+	<script>
+	  {% include "templates/includes/dashboard/js/dashboard.js" %}
+	</script>
+	<script>
+		frappe.ready(function(){
+			if(!erpnext_dashboard) frappe.provide("erpnext_dashboard.dashboard");
+			erpnext_dashboard.filters  = {{filters }};
+		
+		});
+	</script>
+	{% block custom_script %}
+
+	{% endblock %}
 {% endblock %}
 

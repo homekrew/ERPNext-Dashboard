@@ -1,0 +1,12 @@
+{% for filter in filters %}
+	<div class="input-field s12 m6 l6">
+		{% if filter.fieldtype == "Select" %}
+			<select class="{{filter.fieldname}}" id="{{filter.fieldname}}">
+				{% for option in filter.options %}
+					<option value="{{option}}">{{option }}</option>
+				{% endfor %}
+			</select>
+		{% endif %}
+	</div>
+{% endfor %}
+
