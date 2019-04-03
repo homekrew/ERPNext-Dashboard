@@ -1,6 +1,7 @@
 {
 	"css/dashboard-min.css":[
-		"templates/includes/dashboard/css/dashboard.css"
+		"templates/includes/dashboard/css/dashboard.css",
+		"public/css/libs/scrollbar.css"
 	],
 	"js/dashboard-min.js":[
 		"templates/includes/dashboard/js/dashboard.js"
