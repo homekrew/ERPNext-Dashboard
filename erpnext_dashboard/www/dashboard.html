@@ -1,4 +1,7 @@
 {% extends "templates/web.html" %}
+{% block title %}
+	Welcome to Dashboards
+{% endblock %}
 {%- block head -%}
 	{% if meta_block is defined -%}
 		{{ meta_block }}
@@ -13,31 +16,31 @@
 	{%- block style %}
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
-		<link rel="stylesheet" href="/assets/css/dashboard-min.css"/>
-	
+		<link rel="stylesheet" href="/assets/css/dashboard-min.css"/>	
 	{%- endblock -%}
 {%- endblock -%}
 
 {% block content %}
 	{% block sidebard %}{% endblock %}
 	<div class="page_content">
-		<div class="row mx-auto">
-			<div class="col-md-12">
+		<div class="row">
+			<div class="col s12 m12 l12">
 				{% for module in setting.modules %}
-					<div class="col-md-3" style="height:250px;">
-						<div class="card md-4" style="color:black">
-							<div class="card-body">
-								<div class="card-title dashboard-card-title">
-									{{ module.label }}
-								</div>
-								<a href="{{module.url}}">
-									<img style="height:200px;" src="{{ module.dashboard_image}}" 
-										class="card-img-top mx-auto" alt="{{ module.label }}"/>
-								</a>
+					<a href="{{ module.url}}">
+						<div class="card animate fadeUp col s12 m4 l4" style="height:250px;">
+							<h4 class="header text-center waves-effect waves-light btn gradient-45deg-indigo-purple">
+								{{ module.label }}
+							</h4>
+							<div class="card-image">
+								<img style="width:100px;margin:auto;" src="{{ module.dashboard_image}}" 
+									alt="{{ module.label }}"/>
+							</div>
+							<div class="card-content">
 							</div>
 						</div>
-					</div>
+					</a>
 				{% endfor %}
 			</div>
 		</div>

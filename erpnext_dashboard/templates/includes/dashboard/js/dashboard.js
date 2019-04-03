@@ -103,8 +103,8 @@ erpnext_dashboard.dashboard.DoughnutChart = Class.extend({
 	make_wrapper: function(args){
 		this.parent.empty();
 		this.wrapper_id = cstr(Math.random()).split(".")[1];
-		this.$wrapper = $("<canvas style='width:500px; height:500px;'></canvas>").appendTo(this.parent);
-		this.$wrapper.attr("id", this.wrapper_id);	
+		this.$wrapper = $("<canvas></canvas>").appendTo(this.parent);
+		this.$wrapper.attr("id", this.wrapper_id).attr("height", this.height || "200");
 
 	},
 	get_default_options: function(){
@@ -160,3 +160,66 @@ erpnext_dashboard.dashboard.DoughnutChart = Class.extend({
 	}
 })
 
+erpnext_dashboard.dashboard.BarChart  = Class.extend({
+	init: function(args){
+		$.extend(this, args);
+		this.make_wrapper();
+	},
+	make_wrapper: function(args){
+		this.parent.empty();
+		this.wrapper_id = cstr(Math.random()).split(".")[1];
+		var height = this.height;
+		console.log(height);
+		this.$wrapper = $("<canvas></canvas>").attr("height", height).css("height", height+"px").appendTo(this.parent);
+		this.$wrapper.attr("id", this.wrapper_id);	
+
+	},
+	get_default_options: function(){
+		return	{
+				responsive: true,
+					legend: {
+					position: 'top',
+				},
+				title: {
+					display: true,
+					text: this.title || ''
+				}
+			}
+
+	},
+	get_default_params: function(){
+
+		return {
+			"type": this.chart_type,
+			"data":{
+				"datasets":[],
+				"labels": [],
+			}
+			
+		}
+	},
+	render_data: function(){
+		var params = this.get_default_params();
+		params.options = this.get_default_options();
+
+		var data = {
+			"data": [],
+			"backgroundColor": [],
+			"label": "",
+		};
+		var me = this;
+		for(var i=0;i<this.data.length; i++){
+			var ele = this.data[i];
+			data.data.push(ele[this.data_field]);
+			params.data.labels.push(ele[this.label_field]);
+			data.backgroundColor.push(ele.color);
+		}
+		params.data.datasets.push(data);
+		console.log(params);
+		ele = document.getElementById(this.wrapper_id).getContext('2d');
+		this.chart = new Chart(ele, params);
+	},
+	destroy: function(){
+		this.chart.destroy();
+	}
+});

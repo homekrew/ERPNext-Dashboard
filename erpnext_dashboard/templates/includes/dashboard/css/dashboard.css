@@ -1,3 +1,25 @@
+@font-face{
+        font-family:"Gothic";
+        src: url("/assets/erpnext_dashboard/css/fonts/gothic.eot");
+        src: local('gothic'), url('/assets/erpnext_dashboard/css/fonts/gothic.woff') format('woff'), url('/assets/erpnext_dashboard/css/fonts/gothic.ttf') format('truetype');
+}
+
+body{
+        font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        background: none !important;
+        color:black !important;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #444444;
+        line-height: 1.6;
+        font-size:1.5rem !important;
+}
+
+.card{
+        overflow: hidden;
+        margin: 1rem 0 1rem 0;
+}
+
 
 @font-face{
 	font-family:"Gothic";

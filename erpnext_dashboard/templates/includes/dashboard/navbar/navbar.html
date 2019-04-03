@@ -1,17 +1,13 @@
-<nav class="navbar navbar-default navbar-main navbar-expand" role="navigation">
+<nav class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-dark gradient-45deg-indigo-purple no-shadow" role="navigation">
 	<div class="container">
-		<div class="navbar-nav mr-auto">
+		<div class="navbar-nav ml-auto">
 			<a class="navbar-brand ellipsis ml-auto"
 				 href="{{ url_prefix }}{{ home_page or "/"}}">
 				<span>{{ brand_html or (frappe.get_hooks("brand_html") or ["Home"])[0] }}</span>
 			</a>
 		</div>
-		<div class="dropdown navbar-nav ml-auto" style="margin-left:10%;;">
-			{% include "templates/includes/dashboard/navbar/dropdown_items.html" %}
-		</div>
-		<div class="hidden-xs">
-			{% block navbar_items %}
-			{% include "templates/includes/dashboard/navbar/navbar_items.html" %}
+		<div class="navbar-nav mx-auto">
+			{% block navbar_head %}
 			{% endblock %}
 		</div>
 	</div>
